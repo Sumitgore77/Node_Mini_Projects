@@ -1,0 +1,21 @@
+    /* Ensure that the body and html elements take full height */
+    html, body {
+        height: 100%;
+        margin: 0;
+      }
+  
+      /* Make the sidebar stretch from top to bottom */
+      .sidebar {
+        height: 100vh; /* 100% of the viewport height */
+        position: fixed;
+        top: 0;
+        left: 0;
+        bottom: 0;
+        width: 250px; /* Adjust the width as needed */
+      }
+  
+      /* Ensure the main content has space for the sidebar */
+      .main-content {
+        margin-left: 250px; /* Match the width of the sidebar */
+        padding: 20px;
+      }
