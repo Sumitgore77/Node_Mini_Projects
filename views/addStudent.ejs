@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Add Student</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" />
+
+  <style>
+    .form-control:valid {
+      border-color: #198754;
+    }
+
+    .form-control:invalid:focus {
+      border-color: #dc3545;
+    }
+
+    .form-control:focus {
+      box-shadow: none;
+    }
+  </style>
+  <style></style>
+</head>
+
+<body>
+  <%- include("navbar.ejs")%>
+  <div class="container mt-5">
+    <div class="card shadow">
+      <div class="card-header bg-dark text-white text-center">
+        <h3>Add Student</h3>
+      </div>
+      <div class="card-body">
+        <form id="studentForm" action="/saveStud" method="post" novalidate>
+          <div class="mb-3">
+            <label for="name" class="form-label">Name:</label>
+            <input type="text" class="form-control" id="name" name="name" pattern="^[A-Za-z\s]{2,40}$" required
+              placeholder="Enter student's name" />
+            <div class="invalid-feedback">Please enter a valid name (letters only).</div>
+          </div>
+
+
+          <div class="mb-3">
+            <label for="email" class="form-label">Email:</label>
+            <input type="email" class="form-control" id="email" name="email" required
+              placeholder="Enter student's email" />
+            <div class="invalid-feedback">Enter a valid email.</div>
+          </div>
+
+          <div class="mb-3">
+            <label for="contact" class="form-label">Contact:</label>
+            <input type="tel" class="form-control" id="contact" name="contact" pattern="^\d{10}$" required
+              placeholder="Enter 10-digit contact number" />
+            <div class="invalid-feedback">Enter a valid 10-digit number.</div>
+          </div>
+
+          <div class="mb-4">
+            <label for="subject" class="form-label">Subject:</label>
+            <select class="form-control" id="subject" name="subjectId" required>
+              <option value="" disabled selected>Select a subject</option>
+              <% if (Array.isArray(data) && data.length > 0) { %>
+              <% data.forEach(val => { %>
+              <option value="<%= val.cid %>"><%= val.cname %></option>
+              <% }); %>
+              <% } else { %>
+              <option value="">No subjects available</option>
+              <% } %>
+            </select>
+            <div class="invalid-feedback">Please select a subject.</div>
+          </div>
+
+          <button type="submit" class="btn btn-dark w-100" disabled>Submit</button>
+        </form>
+
+        <% if (message) { %>
+        <div class="alert alert-success mt-3 text-center py-2" id="msg2"><%= message %></div>
+        <% } %>
+      </div>
+    </div>
+  </div>
+
+
+  <script src="/validationStud.js"></script>
+  <script src="/viewStudent.js"></script>
+  
+
+  <!-- <script>
+    let alertMsg = document.querySelector("#msg2");
+    setTimeout(()=>{
+    if(alertMsg) alertMsg.remove();
+    },1000)
+  </script> -->
+
+
+
+
+
+
+
+
+  
+</body>
+
+</html>

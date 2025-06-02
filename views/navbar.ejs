@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.6/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-4Q6Gf2aSP4eDXB8Miphtr37CMZZQ5oXLH2yaXMJ2w8e2ZtHTl7GptT4jmndRuHDT" crossorigin="anonymous">
+    <style>
+
+      body {
+        background-image: linear-gradient(to right, #FF00d4, #00ddff);
+      }
+    
+      /* Main navbar links */
+      .navbar-nav .nav-link {
+        transition: all 0.3s ease;
+        color: white;
+      }
+    
+      .navbar-nav .nav-link:hover {
+        background-color: rgba(255, 255, 255, 0.2);
+        color: #ffc107;
+        border-radius: 5px;
+      }
+    
+      /* Dropdown submenu items */
+      .dropdown-menu .dropdown-item {
+        transition: all 0.3s ease;
+      }
+    
+      .dropdown-menu .dropdown-item:hover {
+        background-color: #ffc107;
+        color: #000;
+        border-radius: 5px;
+      }
+      strong{
+        font-size: larger;
+        font-family:fantasy;
+      }
+      .custom-back-btn {
+    background-color: #f8f9fa;
+    color: #0d6efd;
+    border: 2px solid #0d6efd;
+    border-radius: 50px;
+    padding: 8px 20px;
+    font-weight: 500;
+    transition: all 0.3s ease;
+  }
+
+  .custom-back-btn:hover {
+    background-color: #0d6efd;
+    color: white;
+    transform: translateX(-3px);
+    box-shadow: 0 4px 10px rgba(13, 110, 253, 0.2);
+  }
+
+  .back-button-container {
+    margin: 20px;
+  }
+    </style>
+    
+</head>
+<body>
+
+
+    <!-- <div class="container"> -->
+        <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+            <div class="container-fluid">
+              
+              
+              <a class="navbar-brand ms-4" href="/home"><strong>S & G's</strong></a>
+              <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+              </button>
+          
+              <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav">
+          
+                  <!-- Course Dropdown -->
+                  <li class="nav-item dropdown ms-4">
+                    <a class="nav-link dropdown-toggle" href="#" data-bs-toggle="dropdown">Course Master</a>
+                    <ul class="dropdown-menu">
+                      <li><a class="dropdown-item" href="/addCourse">Add Course ➕</a></li>
+                      <li><a class="dropdown-item" href="/viewCourse">View Course 📋</a></li>
+                    </ul>
+                  </li>
+          
+                  <!-- Student Link -->
+                  <li class="nav-item dropdown ms-4">
+                    <a class="nav-link dropdown-toggle" href="#" data-bs-toggle="dropdown">Student Master</a>
+                    <ul class="dropdown-menu">
+                      <li><a class="dropdown-item" href="/addStud">Add Student ➕</a></li>
+                      <li><a class="dropdown-item" href="/viewStud">View Students 📋</a></li>
+                    </ul>
+                  </li>
+          
+                  <!-- Report Link -->
+                  <li class="nav-item dropdown ms-4">
+                    <a class="nav-link dropdown-toggle" href="#" data-bs-toggle="dropdown">Report</a>
+                    <ul class="dropdown-menu">
+                      <li><a class="dropdown-item" href="/report">Course wise student information</a></li>
+                      <li><a class="dropdown-item" href="/count">Course wise student count </a></li>
+                    </ul>
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </nav>
+          <div class="back-button-container">
+            <button onclick="goBack()" class="btn custom-back-btn">
+              <span class="me-2">←</span> Back
+            </button>
+          </div>
+          
+          <!--bootstrap scritpt-->
+          <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+          <script>
+            function goBack() {
+              if (window.history.length > 1) {
+                window.history.back();
+              } else {
+                window.location.href = "/"; // fallback URL
+              }
+            }
+          </script>
+<!-- </body> -->
+</html>

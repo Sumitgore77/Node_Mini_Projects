@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>update Student</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+</head>
+
+<body>
+    <%- include("navbar.ejs")%>
+    <div class="container mt-5">
+        <div class="card">
+            <div class="card-header text-center">
+                <h3>Add Student</h3>
+            </div>
+            <div class="card-body">
+                <form id="studentForm" action="/saveUpdateStud" method="post">
+                    <div class="form-group">
+                        <input type="hidden" name="studId" value="<%=data[0].sid%>">
+                    </div>
+                    <div class="form-group">
+                        <label for="name">Name:</label>
+                        <input type="text" class="form-control" id="name" name="name" required
+                            placeholder="Enter student's name" value="<%=data[0].sname%>">
+                    </div>
+                    <div class="form-group">
+                        <label for="email">Email:</label>
+                        <input type="email" class="form-control" id="email" name="email" required
+                            placeholder="Enter student's email" value="<%=data[0].email%>">
+                    </div>
+                    <div class="form-group">
+                        <label for="contact">Contact:</label>
+                        <input type="tel" class="form-control" id="contact" name="contact" required
+                            placeholder="Enter student's contact number" value="<%=data[0].contact%>">
+                    </div>
+                    <div class="form-group">
+                        <label for="subject">Subject:</label>
+                        <select class="form-control" id="subject" name="subjectId" required>
+                            <option value="<%= data[0].cid%>"  selected><%=data[0].cname%></option>
+
+                            <% if (courseData.length > 0) { %>
+                                <% courseData.forEach(val => { %>
+                                    <option value="<%= val.cid %>"><%= val.cname %></option>
+                                <% }); %>
+                            <% } else { %>
+                                <option value="">No subjects available</option>
+                            <% } %>
+                        </select>
+                    </div>
+                    <button type="submit" class="btn btn-primary btn-block">Submit</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>

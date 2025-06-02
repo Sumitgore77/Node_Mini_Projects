@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Course-wise Student Report</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+</head>
+<body>
+    <%- include("navbar.ejs") %>
+
+    <div class="container py-4">
+        <h2 class="mb-4 text-center">Course-wise Student Report</h2>
+
+        <!-- Result Table -->
+        <div class="card">
+            <div class="card-body">
+                <div class="table-responsive">
+                    <table class="table table-bordered table-hover">
+                        <thead class="table-light">
+                            <tr>
+                                <th>Sr.No</th>
+                                <th>Course Name</th>
+                                <th>Student Count</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <% if(studData && studData.length > 0){ 
+                                studData.forEach((value, i) => { %>
+                                    <tr>
+                                        <td><%= i + 1 %></td>
+                                        <td><%= value.cName %></td>
+                                        <td><%= value.student_count %></td>
+                                    </tr>
+                            <% }) 
+                            } else { %>
+                                <tr>
+                                    <td colspan="3" class="text-center text-muted">Data Not Found!</td>
+                                </tr>
+                            <% } %>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</body>
+</html>

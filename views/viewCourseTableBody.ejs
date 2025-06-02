@@ -1,0 +1,26 @@
+<% if(data.length> 0){ %>
+    <% data.forEach((val,i)=>{ %>
+        <tr>
+            <td>
+                <%= i+1%>
+            </td>
+            <td>
+                <%= val.cname%>
+            </td>
+            <td>
+                <a href="#" class="btn btn-warning btn-sm">
+                    <i class="bi bi-pencil-fill"></i> Update
+                </a>
+            </td>
+            <td>
+                <a href="#" class="btn btn-danger btn-sm">
+                    <i class="bi bi-trash-fill"></i> Delete
+                </a>
+            </td>
+        </tr>
+        <% })%>
+            <% }else{ %>
+                <tr>
+                    <td colspan="3" class="text-center text-muted">No courses available.</td>
+                </tr>
+                <% } %>

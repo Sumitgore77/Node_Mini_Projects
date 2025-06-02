@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Course-wise Student Report</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+</head>
+<body>
+    <%- include("navbar.ejs") %>
+
+    <div class="container py-4">
+        <h2 class="text-center mb-4">Course-wise Student Report</h2>
+
+        <!-- Operation Section -->
+        <form action="/courseWiseStudents" method="get" class="row g-3 mb-4">
+            <div class="col-md-8">
+                <label for="courseFilter" class="form-label">Select Course</label>
+                <select class="form-select" id="selectOption" name="courseName">
+                            <% if(data){ %>
+                                <option value="" selected disabled>-- Select Course --</option>
+                                
+
+                                <% data.forEach( val =>{ %>
+                                    <option value="<%= val.cid%>"><%= val.cname%></option>
+                                    <% }) %>
+                                        <% }else{ %>
+                                            <option value="" selected disabled>-- No Course available! --</option>
+                                            <% } %>
+                        </select>
+            </div>
+            <div class="col-md-4 d-flex align-items-end">
+                <button type="submit" class="btn btn-primary w-100">View Students</button>
+            </div>
+        </form>
+        
+
+        <!-- Result Table -->
+        <div class="card">
+            <div class="card-body">
+                <h5 class="card-title ">Student List</h5>
+                <div class="table-responsive">
+                    <table class="table table-bordered table-hover">
+                        <thead class="table-light">
+                            <tr>
+                                <th>Student ID</th>
+                                <th>Name</th>
+                                <th>Email</th>
+                                <th>Contact</th>
+                                <th>Course</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <% if(studData){ 
+                                 studData.forEach((value,i)=>{ %>
+                                    <tr>
+                                        <td><%= i+1%></td>
+                                        <td><%= value.sname %></td>
+                                        <td><%= value.email%></td>
+                                        <td><%= value.contact %></td>
+                                        <td><%= value.cname%></td>
+                                    </tr>
+                                    <% })
+                            }else{ %>
+                                <td colspan="5"><%= "Data Not Found!" %></td>
+                                <%} %>
+                            
+                            <tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</body>
+</html>
